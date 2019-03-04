@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { NlpHttpService } from '../nlp-http.service';
 
 @Component({
   selector: 'app-main-content',
@@ -8,13 +9,23 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 export class MainContentComponent implements OnInit {
   i: number=0;
   intent: string;
-  questions: string[] = ["What is Java?","How is Java and SpringBoot related?","Elaborate on Docker?","Example of Angular?"];
+  // questions: string[] = ["What is Java?","How is Java and SpringBoot related?","Elaborate on Docker?","Example of Angular?"];
+  public questions;
   ques1=this.questions[0];
   input1;
-  // @ViewChild('editQuestion') inputQues;
-  constructor() { }
+ 
+  constructor(public nlpservice:NlpHttpService) { }
+
+  // public uniqueId: string;
+  // public searchString: string;
+
+  // public quesinfo = {
+  //   questionId : this.uniqueId,
+  //   question: this.searchString
+  // };
 
   ngOnInit() {
+    this.nlpservice.getAllQuestions().subscribe((data) => this.questions = data);
   }
 
   showQuestions(index:number, arr:string[]): void{

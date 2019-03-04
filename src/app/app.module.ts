@@ -6,6 +6,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { MainContentComponent } from './main-content/main-content.component';
 import {FormsModule} from '@angular/forms';
+import { NlpHttpService } from './nlp-http.service';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,7 @@ import {FormsModule} from '@angular/forms';
     AppRoutingModule,
     FormsModule
   ],
-  providers: [],
+  providers: [NlpHttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
